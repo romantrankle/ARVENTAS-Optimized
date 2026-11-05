@@ -1,11 +1,11 @@
 {
   "label": "ab-home",
-  "date": "2026-11-05T14:15:33.736Z",
+  "date": "2026-11-05T14:20:27.211Z",
   "referenceRoot": "commit eb6b28d, original build",
   "roundsPerPage": 5,
   "lighthouseVersion": "12.8.2",
   "chrome": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
-  "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+  "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
   "results": [
     {
       "route": "/",
@@ -127,6 +127,129 @@
       },
       "lcpElement": "div.cookie-dialog > div.cookie-body > div.cookie-copy > p#cookie-intro",
       "failed": []
+    },
+    {
+      "route": "/",
+      "device": "desktop",
+      "runs": 5,
+      "reference": {
+        "performance": {
+          "median": 82,
+          "min": 72,
+          "max": 83
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 58,
+          "min": 58,
+          "max": 58
+        },
+        "fcp": {
+          "median": 523.8096,
+          "min": 516.6160500000001,
+          "max": 554.9181
+        },
+        "lcp": {
+          "median": 1958.4128,
+          "min": 1948.8213999999998,
+          "max": 2019.8908
+        },
+        "si": {
+          "median": 1948.4466886352948,
+          "min": 1872.6752307094769,
+          "max": 2354.2851347803
+        },
+        "tbt": {
+          "median": 192,
+          "min": 172,
+          "max": 313
+        },
+        "cls": {
+          "median": 0.00007722616233254531,
+          "min": 0.00007722616233254531,
+          "max": 0.00007722616233254531
+        },
+        "ttfb": {
+          "median": 19.203,
+          "min": 13.851999999999999,
+          "max": 22.867
+        },
+        "transferKB": {
+          "median": 4535,
+          "min": 4535,
+          "max": 4535
+        }
+      },
+      "current": {
+        "performance": {
+          "median": 96,
+          "min": 86,
+          "max": 98
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "fcp": {
+          "median": 420.75525,
+          "min": 370.11895,
+          "max": 539.74105
+        },
+        "lcp": {
+          "median": 539.74105,
+          "min": 521.5105,
+          "max": 570.2379
+        },
+        "si": {
+          "median": 1169.002630675238,
+          "min": 944.436669348995,
+          "max": 1486.9977951231558
+        },
+        "tbt": {
+          "median": 161.99999999999994,
+          "min": 126.49999999999994,
+          "max": 294.0000000000002
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0.00007722616233254531
+        },
+        "ttfb": {
+          "median": 455.486,
+          "min": 340.049,
+          "max": 528.4929999999999
+        },
+        "transferKB": {
+          "median": 4541,
+          "min": 4541,
+          "max": 4541
+        }
+      },
+      "lcpElement": "div.sf-in > div.sf-top > div.sf-cta > h2",
+      "failed": [
+        "performance:speed-index"
+      ]
     }
   ]
 }

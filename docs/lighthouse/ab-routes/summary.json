@@ -1,0 +1,257 @@
+{
+  "label": "ab-routes",
+  "date": "2026-11-05T14:25:47.026Z",
+  "referenceRoot": "commit eb6b28d, original build",
+  "roundsPerPage": 3,
+  "lighthouseVersion": "12.8.2",
+  "chrome": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+  "results": [
+    {
+      "route": "/immobilie-verkaufen",
+      "device": "mobile",
+      "runs": 3,
+      "reference": {
+        "performance": {
+          "median": 57,
+          "min": 46,
+          "max": 58
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 58,
+          "min": 58,
+          "max": 58
+        },
+        "fcp": {
+          "median": 2654.337125,
+          "min": 2643.268,
+          "max": 2955.50845
+        },
+        "lcp": {
+          "median": 21217.271975,
+          "min": 20923.675199999998,
+          "max": 21242.926525000003
+        },
+        "si": {
+          "median": 6255.2345241310295,
+          "min": 6128.9744588143185,
+          "max": 7637.673978950176
+        },
+        "tbt": {
+          "median": 354,
+          "min": 331,
+          "max": 655
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "ttfb": {
+          "median": 17.979,
+          "min": 15.604999999999999,
+          "max": 21.69
+        },
+        "transferKB": {
+          "median": 4150,
+          "min": 4150,
+          "max": 4150
+        }
+      },
+      "current": {
+        "performance": {
+          "median": 95,
+          "min": 92,
+          "max": 97
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "fcp": {
+          "median": 1213.8355999999999,
+          "min": 1156.6846500000001,
+          "max": 1376.69255
+        },
+        "lcp": {
+          "median": 2298.6711999999998,
+          "min": 2284.3693000000003,
+          "max": 2372.3851000000004
+        },
+        "si": {
+          "median": 1967.2082730521906,
+          "min": 1774.3104511817728,
+          "max": 2360.075734143001
+        },
+        "tbt": {
+          "median": 182.5,
+          "min": 135,
+          "max": 284.4999999999998
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "ttfb": {
+          "median": 358.89300000000003,
+          "min": 293.85999999999996,
+          "max": 488.827
+        },
+        "transferKB": {
+          "median": 1266,
+          "min": 1266,
+          "max": 1266
+        }
+      },
+      "lcpElement": "main#main > section.ow-op > div.ow-pic > img",
+      "failed": [
+        "performance:total-blocking-time"
+      ]
+    },
+    {
+      "route": "/immobilie-verkaufen",
+      "device": "desktop",
+      "runs": 3,
+      "reference": {
+        "performance": {
+          "median": 86,
+          "min": 80,
+          "max": 88
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 58,
+          "min": 58,
+          "max": 58
+        },
+        "fcp": {
+          "median": 674.0258,
+          "min": 620.4643,
+          "max": 706.42925
+        },
+        "lcp": {
+          "median": 1802.0258,
+          "min": 1743.4643,
+          "max": 1869.9292500000001
+        },
+        "si": {
+          "median": 2499.1444727613257,
+          "min": 2220.831027319481,
+          "max": 2642.301383045653
+        },
+        "tbt": {
+          "median": 59.999999999999886,
+          "min": 32,
+          "max": 190.6902500000001
+        },
+        "cls": {
+          "median": 0.00007843282111899133,
+          "min": 0.00007722616233254531,
+          "max": 0.00007843282111899133
+        },
+        "ttfb": {
+          "median": 24.393,
+          "min": 18.897000000000002,
+          "max": 25.98
+        },
+        "transferKB": {
+          "median": 1868,
+          "min": 1868,
+          "max": 1868
+        }
+      },
+      "current": {
+        "performance": {
+          "median": 94,
+          "min": 93,
+          "max": 95
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "fcp": {
+          "median": 502.19325,
+          "min": 441.0164,
+          "max": 521.8356500000001
+        },
+        "lcp": {
+          "median": 1514.3865,
+          "min": 1378.0328,
+          "max": 1665.6713000000002
+        },
+        "si": {
+          "median": 1024.1414956262047,
+          "min": 1022.2309376702196,
+          "max": 1117.4829435520178
+        },
+        "tbt": {
+          "median": 73,
+          "min": 38,
+          "max": 83
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "ttfb": {
+          "median": 324.64300000000003,
+          "min": 315.55,
+          "max": 450.583
+        },
+        "transferKB": {
+          "median": 1113,
+          "min": 1113,
+          "max": 1113
+        }
+      },
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "performance:largest-contentful-paint"
+      ]
+    }
+  ]
+}
