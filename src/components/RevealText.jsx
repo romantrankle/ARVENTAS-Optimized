@@ -31,7 +31,7 @@ export default function RevealText({ as: Tag = 'p', text, className = '' }) {
     return () => { window.removeEventListener('scroll', on); window.removeEventListener('resize', on); raf && cancelAnimationFrame(raf) }
   }, [text, words.length])
   return (
-    <Tag ref={ref} className={`reveal-text ${className}`} data-notr="" aria-label={words.join(' ')}>
+    <Tag ref={ref} className={`reveal-text ${className}`} data-notr="" role={/^h\d/.test(Tag) ? undefined : 'group'} aria-label={words.join(' ')}>
       {words.map((w, i) => <span key={i} className="w" aria-hidden="true"><Brandify>{w}</Brandify>{' '}</span>)}
     </Tag>
   )

@@ -1,5 +1,5 @@
 import { Roll } from './ui.jsx'
-import { memo, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { STATES, MAP_VIEWBOX } from '../content/germany.js'
 
@@ -7,13 +7,16 @@ import { STATES, MAP_VIEWBOX } from '../content/germany.js'
 const Map = memo(function Map({ selected, hovered, onHover, onSelect }) {
   const focus = STATES.find((s) => s.id === (hovered || selected))
   const sel = STATES.find((s) => s.id === selected)
+  // Die Pfade sind rund 85 KB und liegen unterhalb des ersten Bildschirms: nicht ins statische HTML. Die Bundesländer stehen als Liste daneben im HTML.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
   return (
     <svg className="gm-map" viewBox={MAP_VIEWBOX} role="img" aria-label="Karte Deutschlands mit den 16 Bundesländern">
       <defs>
         <filter id="gm-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
       </defs>
       <g>
-        {STATES.map((s) => (
+        {mounted && STATES.map((s) => (
           <path key={s.id} d={s.d} className={`gm-state${s.id === selected ? ' is-selected' : ''}${s.id === hovered ? ' is-hover' : ''}`} onPointerEnter={() => onHover(s.id)} onPointerLeave={() => onHover(null)} onClick={() => onSelect(s.id === selected ? '' : s.id)}>
             <title>{s.name}</title>
           </path>

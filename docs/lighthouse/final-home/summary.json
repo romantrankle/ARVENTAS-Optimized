@@ -1,0 +1,69 @@
+{
+  "label": "final-home",
+  "date": "2026-11-05T13:39:08.154Z",
+  "base": "http://localhost:4173",
+  "runsPerPage": 5,
+  "lighthouseVersion": "12.8.2",
+  "chrome": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+  "results": [
+    {
+      "route": "/",
+      "device": "mobile",
+      "runs": 5,
+      "performance": 83,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcp": 2012.9137,
+      "lcp": 3508.8274,
+      "si": 2996.287047674883,
+      "tbt": 286,
+      "cls": 0,
+      "ttfb": 5.3430000000000035,
+      "transferKB": 1364,
+      "perfRange": [
+        65,
+        84
+      ],
+      "lcpRange": [
+        2059.4710999999998,
+        3551.279491099841
+      ],
+      "lcpElement": "div.cookie-dialog > div.cookie-body > div.cookie-copy > p#cookie-intro",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time"
+      ]
+    },
+    {
+      "route": "/",
+      "device": "desktop",
+      "runs": 5,
+      "performance": 84,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcp": 492.76795,
+      "lcp": 727.5358999999999,
+      "si": 1094.9531624154095,
+      "tbt": 342.4999999999999,
+      "cls": 0,
+      "ttfb": 5.569,
+      "transferKB": 4541,
+      "perfRange": [
+        76,
+        91
+      ],
+      "lcpRange": [
+        722.9460000000001,
+        818.5457999999999
+      ],
+      "lcpElement": "section.hv > div.hv-copy > h1.hv-h > span",
+      "failed": [
+        "performance:total-blocking-time"
+      ]
+    }
+  ]
+}

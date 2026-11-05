@@ -27,7 +27,7 @@ export default function ScrollWords({ text, className = '' }) {
     return () => { window.removeEventListener('scroll', on); window.removeEventListener('resize', on); raf && cancelAnimationFrame(raf) }
   }, [])
   return (
-    <p ref={ref} className={`sw ${className}`} data-notr="" aria-label={str} style={{ '--n': words.length }}>
+    <p ref={ref} className={`sw ${className}`} data-notr="" role="group" aria-label={str} style={{ '--n': words.length }}>
       {words.map((w, i) => <span key={i} className="sw-w" aria-hidden="true" style={{ '--i': i }}>{w} </span>)}
     </p>
   )

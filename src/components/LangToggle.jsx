@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react'
 import { getLang, setLang, subscribe } from '../i18n.js'
 
-export const useLang = () => useSyncExternalStore(subscribe, getLang)
+export const useLang = () => useSyncExternalStore(subscribe, getLang, () => 'de')
 
 export default function LangToggle() {
   const l = useLang()

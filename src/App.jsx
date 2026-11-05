@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, matchRoutes, useLocation } from 'react-router-dom'
 import { lazy, Suspense, useEffect, useRef } from 'react'
 import Ambient from './components/Ambient.jsx'
 import Header from './components/Header.jsx'
@@ -6,23 +6,54 @@ import Footer from './components/Footer.jsx'
 import { ConsentProvider } from './components/Consent.jsx'
 import { MenuProvider, useMenu } from './components/MenuContext.jsx'
 import MenuPanel from './components/MenuPanel.jsx'
-import Home from './pages/Home.jsx'
-const Leistungen = lazy(() => import('./pages/Leistungen.jsx'))
-const ServicePage = lazy(() => import('./pages/ServicePage.jsx'))
-const System = lazy(() => import('./pages/System.jsx'))
-const Insights = lazy(() => import('./pages/Insights.jsx'))
-const About = lazy(() => import('./pages/About.jsx'))
-const Article = lazy(() => import('./pages/Article.jsx'))
-const Owners = lazy(() => import('./pages/Owners.jsx'))
-const Investors = lazy(() => import('./pages/Investors.jsx'))
-const InvestorCircle = lazy(() => import('./pages/InvestorCircle.jsx'))
-const ReportPage = lazy(() => import('./pages/ReportPage.jsx'))
-const Partners = lazy(() => import('./pages/Partners.jsx'))
-const Knowledge = lazy(() => import('./pages/Knowledge.jsx'))
-const Contact = lazy(() => import('./pages/Contact.jsx'))
-const Impressum = lazy(() => import('./pages/Legal.jsx').then((m) => ({ default: m.Impressum })))
-const Datenschutz = lazy(() => import('./pages/Legal.jsx').then((m) => ({ default: m.Datenschutz })))
-const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+// Lazy-Seite, die sich vorab laden lässt: Vor dem Hydrieren muss das Seiten-Chunk da sein, sonst verwirft React das vorgerenderte HTML, sobald ein Update den noch wartenden Bereich erreicht.
+function page(load) {
+  const Lazy = lazy(load)
+  let Loaded = null
+  const Page = () => (Loaded ? <Loaded /> : <Lazy />)
+  Page.preload = () => load().then((m) => { Loaded = m.default })
+  return Page
+}
+const Home = page(() => import('./pages/Home.jsx'))
+const Leistungen = page(() => import('./pages/Leistungen.jsx'))
+const ServicePage = page(() => import('./pages/ServicePage.jsx'))
+const System = page(() => import('./pages/System.jsx'))
+const Insights = page(() => import('./pages/Insights.jsx'))
+const About = page(() => import('./pages/About.jsx'))
+const Article = page(() => import('./pages/Article.jsx'))
+const Owners = page(() => import('./pages/Owners.jsx'))
+const Investors = page(() => import('./pages/Investors.jsx'))
+const InvestorCircle = page(() => import('./pages/InvestorCircle.jsx'))
+const ReportPage = page(() => import('./pages/ReportPage.jsx'))
+const Partners = page(() => import('./pages/Partners.jsx'))
+const Knowledge = page(() => import('./pages/Knowledge.jsx'))
+const Contact = page(() => import('./pages/Contact.jsx'))
+const Impressum = page(() => import('./pages/Legal.jsx').then((m) => ({ default: m.Impressum })))
+const Datenschutz = page(() => import('./pages/Legal.jsx').then((m) => ({ default: m.Datenschutz })))
+const NotFound = page(() => import('./pages/NotFound.jsx'))
+
+const PAGES = [
+  { path: '/', Page: Home },
+  { path: '/immobilie-verkaufen', Page: Owners },
+  { path: '/kapitalanlage-immobilien', Page: Investors },
+  { path: '/investorenkreis', Page: InvestorCircle },
+  { path: '/objektreport', Page: ReportPage },
+  { path: '/partner', Page: Partners },
+  { path: '/wissen', Page: Knowledge },
+  { path: '/wissen/:slug', Page: Article },
+  { path: '/leistungen', Page: Leistungen },
+  { path: '/leistungen/:slug', Page: ServicePage },
+  { path: '/system', Page: System },
+  { path: '/insights', Page: Insights },
+  { path: '/insights/:slug', Page: Article },
+  { path: '/ueber-uns', Page: About },
+  { path: '/kontakt', Page: Contact },
+  { path: '/impressum', Page: Impressum },
+  { path: '/datenschutz', Page: Datenschutz },
+  { path: '*', Page: NotFound },
+]
+export const preloadRoute = (pathname) => matchRoutes(PAGES, pathname)[0].route.Page.preload()
+export const preloadAllRoutes = () => Promise.all(PAGES.map((p) => p.Page.preload()))
 
 // Scroll-Reveal (400–700 ms, siehe global.css). Beobachtet nach jedem Routenwechsel alle neuen .rv/.tl/.tri-Elemente.
 function useReveal(key) {
@@ -106,6 +137,7 @@ function Shell() {
   const { pathname, hash } = useLocation()
   const { open } = useMenu()
   const main = useRef(null)
+  const firstRender = useRef(true)
   useReveal(pathname)
   useMouseParallax()
   useScrollBend()
@@ -115,7 +147,8 @@ function Shell() {
       if (el) { el.scrollIntoView(); return }
     }
     window.scrollTo(0, 0)
-    // Fokusführung: nach Seitenwechsel springt der Fokus an den Seitenanfang
+    // Fokusführung: nach Seitenwechsel springt der Fokus an den Seitenanfang. Beim ersten Laden nicht, sonst überspringt Tab den Sprunglink und die Navigation.
+    if (firstRender.current) { firstRender.current = false; return }
     main.current && main.current.focus({ preventScroll: true })
   }, [pathname, hash])
   return (
@@ -127,24 +160,7 @@ function Shell() {
       <main id="main" ref={main} tabIndex={-1} style={{ outline: 'none' }}>
         <Suspense fallback={<div style={{ minHeight: '100svh' }} />}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/immobilie-verkaufen" element={<Owners />} />
-          <Route path="/kapitalanlage-immobilien" element={<Investors />} />
-          <Route path="/investorenkreis" element={<InvestorCircle />} />
-          <Route path="/objektreport" element={<ReportPage />} />
-          <Route path="/partner" element={<Partners />} />
-          <Route path="/wissen" element={<Knowledge />} />
-          <Route path="/wissen/:slug" element={<Article />} />
-          <Route path="/leistungen" element={<Leistungen />} />
-          <Route path="/leistungen/:slug" element={<ServicePage />} />
-          <Route path="/system" element={<System />} />
-          <Route path="/insights" element={<Insights />} />
-          <Route path="/insights/:slug" element={<Article />} />
-          <Route path="/ueber-uns" element={<About />} />
-          <Route path="/kontakt" element={<Contact />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-          <Route path="*" element={<NotFound />} />
+          {PAGES.map(({ path, Page }) => <Route key={path} path={path} element={<Page />} />)}
         </Routes>
         </Suspense>
       </main>

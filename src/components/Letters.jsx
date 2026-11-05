@@ -23,7 +23,7 @@ export default function Letters({ as: Tag = 'span', text, className = '', style,
   }, [])
   let n = 0
   return (
-    <Tag ref={ref} className={`letters ${className}`} style={style} data-notr="" aria-label={str}>
+    <Tag ref={ref} className={`letters ${className}`} style={style} data-notr="" role={/^h\d/.test(Tag) ? undefined : 'group'} aria-label={str}>
       {words.map((w, wi) => (
         <span key={wi}>
           {wi > 0 ? ' ' : ''}

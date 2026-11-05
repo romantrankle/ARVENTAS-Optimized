@@ -7,7 +7,14 @@ export default function WordZoom({ left, right, images }) {
   const wrap = useRef(null)
   const slot = useRef(null)
   const [idx, setIdx] = useState(0)
-  const [loaded, setLoaded] = useState(() => new Set())
+  // Das erste Foto steht im statischen HTML und kann vor dem Hydrieren fertig sein (dann kein onLoad). Die übrigen kommen erst nach dem Seitenladen dazu.
+  const [loaded, setLoaded] = useState(() => new Set([0]))
+  const [pageLoaded, setPageLoaded] = useState(false)
+  useEffect(() => {
+    const go = () => setPageLoaded(true)
+    if (document.readyState === 'complete') go(); else addEventListener('load', go, { once: true })
+    return () => removeEventListener('load', go)
+  }, [])
   useEffect(() => {
     const t = setInterval(() => setIdx((current) => {
       for (let step = 1; step <= images.length; step++) {
@@ -50,12 +57,12 @@ export default function WordZoom({ left, right, images }) {
         <div className="wz-row">
           <span className="wz-w"><Letters text={left} per={60} /></span>
           <span className="wz-slot" ref={slot}>
-            {images.map((image, i) => <Photo key={typeof image === 'string' ? image : image.src} src={typeof image === 'string' ? image : image.thumbnail || image.src} alt="" loading="eager" className={i === idx ? 'on' : ''} />)}
+            {pageLoaded && images.map((image, i) => <Photo key={typeof image === 'string' ? image : image.src} src={typeof image === 'string' ? image : image.thumbnail || image.src} alt="" loading="eager" className={i === idx ? 'on' : ''} />)}
           </span>
           <span className="wz-w"><Letters text={right} per={60} delay={300} /></span>
         </div>
         <div className="wz-full" aria-hidden="true">
-          {images.map((image, i) => <Photo key={typeof image === 'string' ? image : image.src} src={typeof image === 'string' ? image : image.src} alt="" loading="eager" decoding="async" fetchPriority={i === 0 ? 'high' : 'auto'} onLoad={() => setLoaded((previous) => previous.has(i) ? previous : new Set([...previous, i]))} className={i === idx ? 'on' : ''} />)}
+          {images.map((image, i) => (i === 0 || pageLoaded) && <Photo key={typeof image === 'string' ? image : image.src} src={typeof image === 'string' ? image : image.src} alt="" capMobile loading="eager" decoding="async" fetchPriority={i === 0 ? 'high' : 'auto'} onLoad={() => setLoaded((previous) => previous.has(i) ? previous : new Set([...previous, i]))} className={i === idx ? 'on' : ''} />)}
         </div>
       </div>
     </section>

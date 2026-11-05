@@ -1,0 +1,199 @@
+{
+  "label": "baseline-live",
+  "date": "2026-11-04T21:31:29.467Z",
+  "base": "https://arventas.de",
+  "runsPerPage": 3,
+  "lighthouseVersion": "12.8.2",
+  "chrome": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+  "results": [
+    {
+      "route": "/",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 64,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2165.7690000000002,
+      "lcp": 3377.6715000000004,
+      "si": 4590.087900209153,
+      "tbt": 1066.0000000000002,
+      "cls": 0,
+      "ttfb": 175.82799999999997,
+      "transferKB": 1768,
+      "perfRange": [
+        61,
+        80
+      ],
+      "lcpRange": [
+        3136.6135,
+        3527.2690000000002
+      ],
+      "lcpElement": "div.cookie-dialog > div.cookie-body > div.cookie-copy > p#cookie-intro",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time",
+        "performance:speed-index",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 81,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 1109.573,
+      "lcp": 1339.073,
+      "si": 2150.619402247752,
+      "tbt": 233.5,
+      "cls": 0.00007722616233254531,
+      "ttfb": 179.697,
+      "transferKB": 4546,
+      "perfRange": [
+        79,
+        90
+      ],
+      "lcpRange": [
+        1114.5895,
+        1454.584
+      ],
+      "lcpElement": "section.hv > div.hv-copy > h1.hv-h > span",
+      "failed": [
+        "performance:total-blocking-time",
+        "performance:speed-index",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/immobilie-verkaufen",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 65,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2201.728,
+      "lcp": 12288.385,
+      "si": 3783.924545811224,
+      "tbt": 307,
+      "cls": 0,
+      "ttfb": 188.837,
+      "transferKB": 2787,
+      "perfRange": [
+        50,
+        68
+      ],
+      "lcpRange": [
+        11539.747,
+        13751.728
+      ],
+      "lcpElement": "main#main > section.ow-op > div.ow-pic > img",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time",
+        "performance:speed-index",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/immobilie-verkaufen",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 95,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 801.3805,
+      "lcp": 1002.8805,
+      "si": 1855.5135043248013,
+      "tbt": 2,
+      "cls": 0.00007722616233254531,
+      "ttfb": 177.38799999999992,
+      "transferKB": 1886,
+      "perfRange": [
+        94,
+        95
+      ],
+      "lcpRange": [
+        975.4815,
+        1061.825
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "performance:speed-index",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/kontakt",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 85,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2041.26,
+      "lcp": 3743.5119999999997,
+      "si": 3134.3022995650804,
+      "tbt": 157,
+      "cls": 0,
+      "ttfb": 190.089,
+      "transferKB": 500,
+      "perfRange": [
+        84,
+        86
+      ],
+      "lcpRange": [
+        3604.767,
+        3766.26
+      ],
+      "lcpElement": "div.page > main#main > section.phero > img.phero-img",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/kontakt",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 97,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 683.721,
+      "lcp": 860.721,
+      "si": 1477.7217184863605,
+      "tbt": 0,
+      "cls": 0.00007278697136853165,
+      "ttfb": 175.098,
+      "transferKB": 566,
+      "perfRange": [
+        97,
+        98
+      ],
+      "lcpRange": [
+        823.819,
+        895.413
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "performance:speed-index",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    }
+  ]
+}

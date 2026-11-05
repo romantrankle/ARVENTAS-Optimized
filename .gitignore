@@ -1,3 +1,7 @@
 node_modules
 dist
 .env
+.ssr
+test-results
+playwright-report
+.lighthouseci

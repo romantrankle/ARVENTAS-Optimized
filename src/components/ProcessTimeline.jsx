@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { OWNER_PROCESS, INVESTOR_PROCESS } from '../content/data.js'
 import { TEAM_PROCESS_PHOTOS } from '../content/team.js'
 import { qualityPhoto } from '../content/photoQuality.js'
+import { useFirstPaint } from './Photo.jsx'
 
 // Ablauf: Würfel wie in der Landingpage. Beim Scrollen kippt und dreht er sich von Schritt zu Schritt (Seite nach vorn), wechselt die Seite
 // und der Text wechselt mit. Schmale Bildschirme und reduzierte Bewegung: schlichte nummerierte Liste.
@@ -11,6 +12,8 @@ const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2)
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v))
 
 export default function ProcessTimeline({ initial = 'owner' }) {
+  // Die Würfelflächen sind CSS-Hintergründe: Der Browser lädt sie sofort, auch weit unterhalb des ersten Bildschirms.
+  const painted = useFirstPaint()
   const [who, setWho] = useState(initial)
   const [flat, setFlat] = useState(false)
   const box = useRef(null)
@@ -87,7 +90,7 @@ export default function ProcessTimeline({ initial = 'owner' }) {
               {FACES.map((f, i) => {
                 const source = TEAM_PROCESS_PHOTOS[who][i]
                 const photo = qualityPhoto(typeof source === 'string' ? { src: source } : source)
-                return <i key={f} className={'pck-f pck-f--' + f} style={{ backgroundImage: `url(${photo.src})` }} />
+                return <i key={f} className={'pck-f pck-f--' + f} style={painted ? { backgroundImage: `url(${photo.src})` } : undefined} />
               })}
             </div>
           </div>

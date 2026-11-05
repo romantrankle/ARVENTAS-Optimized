@@ -23,7 +23,7 @@ export default function KnowledgeTabs({ cat, setCat, full, base = 'Alle', images
   return (
     <div className={'kl' + (full ? ' kl-full' : '')} onMouseLeave={() => setCat(base)}>
       <div className="kl-img" aria-hidden="true">
-        {CATEGORIES.filter((c) => !loadOnDemand || c === cat || c === visible || visited.has(c)).map((c) => <Photo key={c} data-category={c} className={visible === c ? 'on' : ''} image={images[c] || pic(c, full)} loading={cat === c ? 'eager' : 'lazy'} fetchPriority={cat === c ? 'high' : 'auto'} onLoad={loadOnDemand ? () => setLoaded((previous) => previous.has(c) ? previous : new Set([...previous, c])) : undefined} />)}
+        {CATEGORIES.filter((c) => !loadOnDemand || c === cat || c === visible || visited.has(c)).map((c) => <Photo key={c} data-category={c} className={visible === c ? 'on' : ''} image={images[c] || pic(c, full)} loading={cat === c ? 'eager' : 'lazy'} fetchPriority={cat === c && !loadOnDemand ? 'high' : 'auto'} onLoad={loadOnDemand ? () => setLoaded((previous) => previous.has(c) ? previous : new Set([...previous, c])) : undefined} />)}
       </div>
       <ol className="kl-list" aria-label="Kategorien">
         {CATEGORIES.map((c, i) => {

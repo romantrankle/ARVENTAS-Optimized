@@ -1,0 +1,378 @@
+{
+  "label": "baseline-local",
+  "date": "2026-11-04T21:24:52.700Z",
+  "base": "http://localhost:4173",
+  "runsPerPage": 3,
+  "lighthouseVersion": "12.8.2",
+  "chrome": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+  "results": [
+    {
+      "route": "/",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 64,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2257.4139,
+      "lcp": 7286.120849999999,
+      "si": 2397.916200463088,
+      "tbt": 390.3534749999999,
+      "cls": 0,
+      "ttfb": 1.853,
+      "transferKB": 1742,
+      "perfRange": [
+        54,
+        81
+      ],
+      "lcpRange": [
+        3643.9455,
+        7531.712100000001
+      ],
+      "lcpElement": "div.cookie-dialog > div.cookie-body > div.cookie-copy > p#cookie-intro",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 87,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 493.6422,
+      "lcp": 2153.6422,
+      "si": 821.2957418215442,
+      "tbt": 133,
+      "cls": 0.00007722616233254531,
+      "ttfb": 1.4669999999999999,
+      "transferKB": 4520,
+      "perfRange": [
+        83,
+        90
+      ],
+      "lcpRange": [
+        1852.3279000000002,
+        2536.23285
+      ],
+      "lcpElement": "section.hv > div.hv-copy > h1.hv-h > span",
+      "failed": [
+        "performance:largest-contentful-paint",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/immobilie-verkaufen",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 67,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2401.1346249999997,
+      "lcp": 21161.161050000002,
+      "si": 2401.1346249999997,
+      "tbt": 260,
+      "cls": 0,
+      "ttfb": 2.105,
+      "transferKB": 4140,
+      "perfRange": [
+        67,
+        70
+      ],
+      "lcpRange": [
+        21159.16155,
+        21181.3088
+      ],
+      "lcpElement": "main#main > section.ow-op > div.ow-pic > img",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/immobilie-verkaufen",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 95,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 504.6703,
+      "lcp": 1568.6702999999998,
+      "si": 579.0989077965652,
+      "tbt": 0,
+      "cls": 0.00007722616233254531,
+      "ttfb": 1.8330000000000002,
+      "transferKB": 1859,
+      "perfRange": [
+        94,
+        100
+      ],
+      "lcpRange": [
+        724.97165,
+        1629.5599499999998
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "performance:largest-contentful-paint",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/kapitalanlage-immobilien",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 66,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2455.57675,
+      "lcp": 12262.60745,
+      "si": 2455.57675,
+      "tbt": 269,
+      "cls": 0,
+      "ttfb": 2.122,
+      "transferKB": 3155,
+      "perfRange": [
+        65,
+        70
+      ],
+      "lcpRange": [
+        12235.379100000002,
+        12343.92805
+      ],
+      "lcpElement": "div.consent-site > div.page > main#main > section.sec",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/kapitalanlage-immobilien",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 535.17,
+      "lcp": 750.7268,
+      "si": 591.6783001890616,
+      "tbt": 3,
+      "cls": 0.00007722616233254531,
+      "ttfb": 1.8219999999999998,
+      "transferKB": 3221,
+      "perfRange": [
+        92,
+        100
+      ],
+      "lcpRange": [
+        716.96775,
+        1882.804
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/objektreport",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 65,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2465.2891250000002,
+      "lcp": 9489.18385,
+      "si": 2465.2891250000002,
+      "tbt": 300,
+      "cls": 0,
+      "ttfb": 3.147,
+      "transferKB": 1784,
+      "perfRange": [
+        65,
+        66
+      ],
+      "lcpRange": [
+        9467.745975,
+        9489.304774999999
+      ],
+      "lcpElement": "div.page > main#main > section.phero > img.phero-img",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "performance:total-blocking-time",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/objektreport",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 99,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 510.19415000000004,
+      "lcp": 972.1875,
+      "si": 622.7716816455384,
+      "tbt": 6.5,
+      "cls": 0.00007722616233254531,
+      "ttfb": 2.53,
+      "transferKB": 1529,
+      "perfRange": [
+        99,
+        99
+      ],
+      "lcpRange": [
+        946.3411,
+        974.69415
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/wissen/off-market-verstehen",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 72,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2464.21975,
+      "lcp": 7418.677250000001,
+      "si": 2464.21975,
+      "tbt": 101,
+      "cls": 0,
+      "ttfb": 2.7700000000000005,
+      "transferKB": 1124,
+      "perfRange": [
+        70,
+        72
+      ],
+      "lcpRange": [
+        7405.218199999999,
+        7566.2636999999995
+      ],
+      "lcpElement": "div.page > main#main > section.phero > img.phero-img",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/wissen/off-market-verstehen",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 96,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 507.2173,
+      "lcp": 1370.98435,
+      "si": 551.8051993627874,
+      "tbt": 0,
+      "cls": 0.00007722616233254531,
+      "ttfb": 2.376,
+      "transferKB": 1191,
+      "perfRange": [
+        96,
+        96
+      ],
+      "lcpRange": [
+        1370.5706500000001,
+        1371.2173
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "performance:largest-contentful-paint",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/kontakt",
+      "device": "mobile",
+      "runs": 3,
+      "performance": 82,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 2399.171625,
+      "lcp": 4210.71795,
+      "si": 2399.171625,
+      "tbt": 120,
+      "cls": 0,
+      "ttfb": 2.425,
+      "transferKB": 473,
+      "perfRange": [
+        82,
+        82
+      ],
+      "lcpRange": [
+        4210.46385,
+        4211.60595
+      ],
+      "lcpElement": "div.page > main#main > section.phero > img.phero-img",
+      "failed": [
+        "performance:first-contentful-paint",
+        "performance:largest-contentful-paint",
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    },
+    {
+      "route": "/kontakt",
+      "device": "desktop",
+      "runs": 3,
+      "performance": 99,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 58,
+      "fcp": 539.483875,
+      "lcp": 823.3806500000001,
+      "si": 599.4269819497575,
+      "tbt": 0,
+      "cls": 0.00007722616233254531,
+      "ttfb": 2.521,
+      "transferKB": 539,
+      "perfRange": [
+        99,
+        100
+      ],
+      "lcpRange": [
+        821.49375,
+        824.5455999999999
+      ],
+      "lcpElement": "div#root > div.consent-site > div.page > main#main",
+      "failed": [
+        "seo:is-crawlable",
+        "seo:robots-txt"
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ export default function Article() {
   if (!a) return <NotFound />
   return (
     <>
-      <Seo title={`${a.title} | ${baseT} | ARVENTAS`} description={a.teaser} />
+      <Seo title={`${a.title} | ${baseT} | ARVENTAS`} description={a.teaser} canonical={`/wissen/${a.slug}`} />
       <PageHero image={a.img} crumb={<><Link to={base}>{baseT}</Link> / {a.title}</>} title={a.title}>
         <p style={{ marginTop: 20 }}><span className="tagd">Entwurf</span></p>
       </PageHero>

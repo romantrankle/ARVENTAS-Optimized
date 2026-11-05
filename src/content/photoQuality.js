@@ -4,6 +4,7 @@ import { EDITORIAL_PHOTOS } from './editorialPhotos.js'
 import { KNOWLEDGE_CATEGORY_PHOTOS } from './knowledgePhotos.js'
 import { OWNER_HOUSE_PHOTO } from './ownerHouse.js'
 import { LEGACY_PHOTO_QUALITY } from './legacyPhotoQuality.js'
+import { RESPONSIVE_VARIANTS } from './responsiveVariants.js'
 import aliases from './photoQualityAliases.js'
 
 // Same-photo replacements only. Original full-size photographs take precedence over
@@ -21,6 +22,7 @@ for (const [previous, current] of Object.entries(aliases)) {
 SOURCES.set('/media/p/team-analyse.webp', TEAM_PHOTOS.market)
 SOURCES.set('/media/p/owner-brown-house.png', OWNER_HOUSE_PHOTO)
 for (const [previous, photo] of Object.entries(LEGACY_PHOTO_QUALITY)) SOURCES.set(previous, photo)
+for (const [previous, photo] of Object.entries(RESPONSIVE_VARIANTS)) SOURCES.set(previous, photo)
 
 export function qualityPhoto(source) {
   const original = SOURCES.get(source?.src)

@@ -1,11 +1,14 @@
 # ARVENTAS – Übergabe an den Webdesigner
 
-Stand: Prototyp mit Demo-Inhalten. **Nicht zur Veröffentlichung freigegeben.** Die Seite trägt `noindex` (siehe `index.html`). Vor dem Livegang entfernen.
+Stand: Prototyp mit Demo-Inhalten. **Nicht zur Veröffentlichung freigegeben.** Der Build ist indexierbar, außer auf Vercel (Vorschau) und mit `SITE_INDEXABLE=false npm run build`. **Vor dem Hochladen auf arventas.de die offenen Punkte in Abschnitt 7 prüfen**: Sobald diese Fassung dort liegt, kann die Seite in Suchmaschinen erscheinen.
 
 ## 1. Start und Build
 - Entwicklung: `npm install`, dann `npm run dev`
-- Produktions-Build: `npm run build` (Ausgabe in `dist/`), Vorschau: `npm run preview`
-- Hosting: Vercel. `vercel.json` leitet alle Pfade auf `index.html` (Single-Page-App); statische Dateien haben Vorrang.
+- Produktions-Build: `npm run build` (Ausgabe in `dist/`, jede Route als fertige HTML-Datei), Vorschau: `npm run preview`
+- Tests: `npm run test:e2e` (Playwright und axe gegen den Build), Messung: `npm run lighthouse -- <name>`
+- Hosting: Hostinger (arventas.de, `public/.htaccess`) und Vercel (Vorschau, `vercel.json`). Unbekannte Adressen liefern `404.html` mit Status 404.
+- Neue Route: in `src/App.jsx` (`PAGES`) und `src/entry-server.jsx` (`CURRENT`) eintragen, sonst wird sie nicht vorgerendert.
+- Hero-Fotos: Neue Motive brauchen eine Erstbild-Fassung in `public/media/lq` und einen Eintrag in `src/content/heroPreviews.js`. Ohne Eintrag lädt das Handy direkt die volle Qualität (funktioniert, nur langsamer).
 - Rahmen: Vite, React, React Router (bestehendes Projekt, daher weiter JavaScript statt TypeScript).
 
 ## 2. Seiten (alle 12 Routen umgesetzt)

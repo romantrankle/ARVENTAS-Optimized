@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Icon from './Icon.jsx'
 
@@ -24,7 +24,10 @@ export function ConsentProvider({ children }) {
   const [saved] = useState(storedChoice)
   const [consent, setConsent] = useState(saved || NECESSARY_ONLY)
   const [hasChoice, setHasChoice] = useState(Boolean(saved))
-  const [open, setOpen] = useState(!saved)
+  // Erster Render wie im statischen HTML (Dialog offen), danach zählt die gespeicherte Auswahl. Das Inline-Skript in index.html verhindert bis dahin das Aufblitzen.
+  const [open, setOpen] = useState(true)
+  const [hydrated, setHydrated] = useState(false)
+  useLayoutEffect(() => { if (saved) setOpen(false); setHydrated(true); document.documentElement.classList.remove('cc-set') }, [saved])
   const [manual, setManual] = useState(false)
   const [details, setDetails] = useState(false)
   const box = useRef(null)
@@ -66,9 +69,11 @@ export function ConsentProvider({ children }) {
   const showLegal = () => {
     setManual(false); setDetails(false); setOpen(!hasChoice)
   }
+  // Stabiler Wert: Updates dieses Providers sollen beim Hydrieren nicht in die Seite durchschlagen.
+  const value = useMemo(() => ({ consent, openSettings: () => { setManual(true); setDetails(true); setOpen(true) } }), [consent])
   return (
-    <Ctx.Provider value={{ consent, openSettings: () => { setManual(true); setDetails(true); setOpen(true) } }}>
-      <div className="consent-site" inert={visible || undefined}>{children}</div>
+    <Ctx.Provider value={value}>
+      <div className="consent-site" inert={(hydrated && visible) || undefined}>{children}</div>
       {visible && (
         <div className="cookie-backdrop" onMouseDown={(e) => { if (e.target === e.currentTarget) setOpen(false) }}>
           <div className="cookie-dialog" role="dialog" aria-modal="true" aria-labelledby="cookie-h" aria-describedby="cookie-intro cookie-status" ref={box} tabIndex={-1}>
