@@ -1,0 +1,132 @@
+{
+  "label": "ab-home",
+  "date": "2026-11-05T14:15:33.736Z",
+  "referenceRoot": "commit eb6b28d, original build",
+  "roundsPerPage": 5,
+  "lighthouseVersion": "12.8.2",
+  "chrome": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+  "results": [
+    {
+      "route": "/",
+      "device": "mobile",
+      "runs": 5,
+      "reference": {
+        "performance": {
+          "median": 55,
+          "min": 52,
+          "max": 56
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 58,
+          "min": 58,
+          "max": 58
+        },
+        "fcp": {
+          "median": 2384.6221,
+          "min": 2355.4434,
+          "max": 2400.5016000000005
+        },
+        "lcp": {
+          "median": 7509.6278,
+          "min": 7491.27595,
+          "max": 7556.023574999999
+        },
+        "si": {
+          "median": 6769.936786203654,
+          "min": 6714.107175647085,
+          "max": 8068.989147430897
+        },
+        "tbt": {
+          "median": 469.5,
+          "min": 444,
+          "max": 534.5000000000005
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "ttfb": {
+          "median": 16.831,
+          "min": 12.684000000000001,
+          "max": 21.739
+        },
+        "transferKB": {
+          "median": 1752,
+          "min": 1752,
+          "max": 1752
+        }
+      },
+      "current": {
+        "performance": {
+          "median": 97,
+          "min": 96,
+          "max": 98
+        },
+        "accessibility": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "seo": {
+          "median": 100,
+          "min": 100,
+          "max": 100
+        },
+        "fcp": {
+          "median": 1313.10465,
+          "min": 1179.7341000000001,
+          "max": 1355.9277
+        },
+        "lcp": {
+          "median": 2046.8503,
+          "min": 1834.5455000000002,
+          "max": 2514.3139499999997
+        },
+        "si": {
+          "median": 2360.7920018743184,
+          "min": 2000.7614261016822,
+          "max": 3295.021796073229
+        },
+        "tbt": {
+          "median": 125,
+          "min": 93.5,
+          "max": 173
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "ttfb": {
+          "median": 345.394,
+          "min": 312.955,
+          "max": 380.137
+        },
+        "transferKB": {
+          "median": 1757,
+          "min": 1757,
+          "max": 1757
+        }
+      },
+      "lcpElement": "div.cookie-dialog > div.cookie-body > div.cookie-copy > p#cookie-intro",
+      "failed": []
+    }
+  ]
+}
