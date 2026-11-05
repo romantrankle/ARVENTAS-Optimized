@@ -8,3 +8,4 @@ Off-Market-Immobilien, deutschlandweit. Vite + React.
 - Indexierung: Build ist indexierbar, außer auf Vercel oder mit `SITE_INDEXABLE=false npm run build`
 
 Prototyp mit Demo-Inhalten, nicht zur Veröffentlichung freigegeben.
+"# ARVENTAS-Optimized" 
