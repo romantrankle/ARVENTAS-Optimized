@@ -14,7 +14,8 @@ const app = (
 
 // Vorgerenderte Seiten werden in kleinen Abschnitten hydriert (startTransition), damit keine langen Tasks entstehen.
 // Adressen mit Query (?region=…) und die englische Lesefassung rendern neu: Das statische HTML ist deutsch und kennt keine Parameter, es würde vom ersten Render abweichen.
-if (root.hasChildNodes() && !location.search && getLang() === 'de') preloadRoute(location.pathname).finally(() => startTransition(() => hydrateRoot(root, app)))
+// Erst nach dem ersten Bild: Das Hydrieren konkurriert sonst mit dem ersten Zeichnen, und das Seiten-Chunk mit den Ressourcen des ersten Bildschirms.
+if (root.hasChildNodes() && !location.search && getLang() === 'de') requestAnimationFrame(() => setTimeout(() => preloadRoute(location.pathname).finally(() => startTransition(() => hydrateRoot(root, app)))))
 else preloadRoute(location.pathname).finally(() => createRoot(root).render(app))
 
 initI18n()

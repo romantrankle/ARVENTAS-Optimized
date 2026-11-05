@@ -51,8 +51,12 @@ const beasties = new Beasties({ path: 'dist', publicPath: '/', preload: 'media',
 // Beasties übernimmt @font-face nicht ins kritische CSS. Ohne diese Regeln rendert der Text bis zum Gesamt-CSS in der Ersatzschrift und springt dann um.
 const cssFile = template.match(/href="\/(assets\/index-[^"]+\.css)"/)[1]
 const FONT_FACES = readFileSync(join('dist', cssFile), 'utf8').match(/@font-face\{[^}]*\}/g).join('')
+// Das Gesamt-CSS wird für den ersten Bildschirm nicht gebraucht (die Seite trägt ihre Regeln inline) und startet deshalb nach dem ersten Bild.
+const LATE_CSS = `<script>requestAnimationFrame(function(){setTimeout(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='/${cssFile}';document.head.appendChild(l)})})</script>`
+// Ein Layout statt zwei: Ohne Wartezeit läuft das teuerste Layout in Ersatzschriften und wird beim Tausch komplett wiederholt. Höchstens 700 ms, danach gilt die Ersatzschrift wie bisher.
+const FONT_WAIT = `<script>(function(){var h=document.documentElement,f=document.fonts;if(!f||!f.load)return;h.classList.add('fw');var d=function(){h.classList.remove('fw')};setTimeout(d,700);Promise.all(['400 1em Manrope','500 1em Manrope','600 1em Manrope','700 1em Manrope','400 1em "Instrument Serif"'].map(function(x){return f.load(x)})).then(d,d)})()</script>`
 const NOSCRIPT = '<noscript><style>.rv,.letters .lc{opacity:1!important;transform:none!important}.cookie-backdrop{display:none!important}</style></noscript>'
-const finish = async (html) => (await beasties.process(html)).replace('</head>', `<style>${FONT_FACES}</style>${NOSCRIPT}</head>`).replace(' data-beasties-container', '')
+const finish = async (html) => (await beasties.process(html)).replace(/<link rel="stylesheet"[^>]*media="print"[^>]*>/, LATE_CSS).replace('</head>', `<style>${FONT_FACES}.fw #root{display:none}</style>${FONT_WAIT}${NOSCRIPT}</head>`).replace(' data-beasties-container', '')
   // Auf langsamen Netzen zuerst Hero-Bild und Schrift, danach JavaScript: Die Seite ist schon vollständig im HTML.
   .replace('<script type="module"', '<script type="module" fetchpriority="low"').replace(/<link rel="modulepreload"/g, '<link rel="modulepreload" fetchpriority="low"')
 

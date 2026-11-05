@@ -266,3 +266,18 @@ test('Nachträglich eingehängte Fotos haben sofort eine Quelle', async ({ page 
   }))
   expect(empty).toBe(0)
 })
+
+test('Schriften: Inhalt wartet höchstens kurz, auch wenn eine Schrift hängt', async ({ page }) => {
+  await consented(page)
+  await page.route('**/*.woff2', () => {}) // Antwort bleibt aus
+  await page.goto('/kontakt', { waitUntil: 'commit' })
+  await expect(page.locator('h1')).toBeVisible({ timeout: 3000 })
+  await expect(page.locator('html')).not.toHaveClass(/\bfw\b/)
+})
+
+test('Schriften: Nach dem Laden ist kein Wartezustand übrig und die Webschrift aktiv', async ({ page }) => {
+  await consented(page)
+  await page.goto('/kontakt', { waitUntil: 'load' })
+  await expect(page.locator('html')).not.toHaveClass(/\bfw\b/)
+  expect(await page.evaluate(() => document.fonts.check('400 16px Manrope') && document.fonts.check('400 16px "Instrument Serif"'))).toBe(true)
+})

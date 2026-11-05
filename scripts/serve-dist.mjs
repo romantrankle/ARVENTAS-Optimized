@@ -1,6 +1,6 @@
 // Statischer Produktions-Server für Messungen: Kompression und Caching wie beim Hosting, ohne Vite-Dev-Verhalten.
 import { createServer } from 'node:http'
-import { readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { readFile, stat } from 'node:fs/promises'
 import { extname, join, normalize } from 'node:path'
 import { brotliCompressSync, gzipSync } from 'node:zlib'
@@ -13,6 +13,11 @@ const hostHeaders = Object.fromEntries(JSON.parse(readFileSync('vercel.json', 'u
 
 export function serveDist(port = 4173, root = 'dist') {
   const cache = new Map()
+  // Vorab komprimieren wie beim Hosting: Sonst kostet die erste Anfrage je Datei Hunderte Millisekunden und verfälscht jede Messung auf frisch gestartetem Server.
+  for (const entry of readdirSync(root, { recursive: true, withFileTypes: true })) {
+    const file = join(entry.parentPath, entry.name)
+    if (entry.isFile() && COMPRESSIBLE.has(extname(file))) cache.set(`br:${file}`, brotliCompressSync(readFileSync(file)))
+  }
   const server = createServer(async (req, res) => {
     const path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/\\/g, '/').replace(/\/$/, '')
     const candidates = [join(root, path), join(root, path, 'index.html')]

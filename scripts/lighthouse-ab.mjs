@@ -1,7 +1,8 @@
 // Vergleich unter gleichen Bedingungen: Referenz-Build und aktueller Build laufen abwechselnd, weil die Rechnerlast über die Zeit stark schwankt.
 // Nutzung: node scripts/lighthouse-ab.mjs <referenz-dist> <label> [--rounds=3] [--routes=/,/kontakt] [--devices=mobile,desktop]
-import { execFileSync } from 'node:child_process'
+import { execFile } from 'node:child_process'
 import { mkdirSync, readFileSync, rmSync, renameSync, writeFileSync } from 'node:fs'
+import { serveDist } from './serve-dist.mjs'
 
 const [refRoot, label = 'ab'] = process.argv.slice(2)
 const arg = (n, d) => process.argv.find((a) => a.startsWith(`--${n}=`))?.split('=').slice(1).join('=') ?? d
@@ -12,13 +13,14 @@ const out = `docs/lighthouse/${label}`
 mkdirSync(out, { recursive: true })
 const KEYS = ['performance', 'accessibility', 'bestPractices', 'seo', 'fcp', 'lcp', 'si', 'tbt', 'cls', 'ttfb', 'transferKB']
 const median = (xs) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)]
+const servers = [await serveDist(4186, refRoot), await serveDist(4187, 'dist')]
 const results = []
 let meta = {}
 for (const route of routes) for (const device of devices) {
   const runs = { reference: [], current: [] }
-  for (let i = 0; i < rounds; i++) for (const [name, root] of [['reference', refRoot], ['current', 'dist']]) {
+  for (let i = 0; i < rounds; i++) for (const [name, port] of [['reference', 4186], ['current', 4187]]) {
     const tmp = `_ab_${name}`
-    execFileSync('node', ['scripts/lighthouse.mjs', tmp, '--runs=1', `--routes=${route}`, `--devices=${device}`, `--root=${root}`], { stdio: 'ignore' })
+    await new Promise((resolve, reject) => execFile('node', ['scripts/lighthouse.mjs', tmp, '--runs=1', `--routes=${route}`, `--devices=${device}`, `--base=http://localhost:${port}`], (e) => (e ? reject(e) : resolve())))
     const s = JSON.parse(readFileSync(`docs/lighthouse/${tmp}/summary.json`, 'utf8'))
     meta = { lighthouseVersion: s.lighthouseVersion, chrome: s.chrome, networkUserAgent: s.networkUserAgent }
     const r = s.results[0]
@@ -37,3 +39,5 @@ for (const route of routes) for (const device of devices) {
   console.log(`${route} ${device}\n  ref ${p(row.reference)}\n  now ${p(row.current)}`)
   writeFileSync(`${out}/summary.json`, JSON.stringify({ label, date: new Date().toISOString(), referenceRoot: 'commit eb6b28d, original build', roundsPerPage: rounds, ...meta, results }, null, 2))
 }
+servers.forEach((s) => s.close())
+process.exit(0)
