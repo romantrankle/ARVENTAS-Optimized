@@ -248,8 +248,7 @@ test('Würfel ist im Ablauf tatsächlich sichtbar', async ({ page }) => {
   const top = await page.locator('#ablauf').evaluate((e) => e.getBoundingClientRect().top + scrollY)
   await page.evaluate((y) => window.scrollTo({ top: y + 900, behavior: 'instant' }), top)
   await page.waitForTimeout(1500)
-  const box = await page.locator('.pck-stage').boundingBox()
-  const shot = await page.screenshot({ clip: { x: box.x, y: box.y, width: box.width, height: box.height } })
+  const shot = await page.locator('.pck-stage').screenshot()
   // Mit Fotofläche ist das PNG deutlich größer als der glatte Hintergrund, der ohne Würfel übrig bleibt .
   expect(shot.length).toBeGreaterThan(150000)
 })

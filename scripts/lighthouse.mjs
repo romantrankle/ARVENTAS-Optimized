@@ -1,4 +1,4 @@
-// Lighthouse-Messreihe. Nutzung: node scripts/lighthouse.mjs <label> [--runs=3] [--base=https://…] [--routes=/,/kontakt] [--devices=mobile,desktop]
+// Lighthouse-Messreihe. Nutzung: node scripts/lighthouse.mjs <label> [--runs=3] [--base=https://…] [--routes=/,/kontakt] [--devices=mobile,desktop] [--root=dist]
 // Ohne --base wird dist/ lokal über serve-dist.mjs ausgeliefert. Ergebnis: docs/lighthouse/<label>/ (Summary plus Median-Rohbericht je Seite und Gerät).
 import { mkdirSync, writeFileSync } from 'node:fs'
 import * as chromeLauncher from 'chrome-launcher'
@@ -12,7 +12,7 @@ const runs = Number(arg('runs', 3))
 const routes = arg('routes', '/,/immobilie-verkaufen,/kapitalanlage-immobilien,/objektreport,/wissen/off-market-verstehen,/kontakt').split(',')
 const devices = arg('devices', 'mobile,desktop').split(',')
 const remote = arg('base')
-const server = remote ? null : await serveDist(4173)
+const server = remote ? null : await serveDist(4173, arg('root', 'dist'))
 const base = remote || 'http://localhost:4173'
 const out = `docs/lighthouse/${label}`
 mkdirSync(out, { recursive: true })
